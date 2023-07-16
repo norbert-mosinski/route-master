@@ -1,0 +1,42 @@
+{
+  "name": "route-master",
+  "version": "1.0.0",
+  "description": "Simplify route management, define routes effortlessly, attach interceptors, integrate with Axios/Fetch. Streamline routing, empower developers. Create efficient web apps. No more complex configurations. Embrace convenience.",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "test": "jest --config jestconfig.json",
+    "build": "tsc",
+    "lint": "eslint ./src --fix --ext .js,.jsx,.ts,.tsx",
+    "start": "node lib/index.js"
+  },
+  "keywords": [
+    "route management",
+    "route handling",
+    "route definition",
+    "route naming",
+    "interceptors",
+    "HTTP clients",
+    "Axios",
+    "Fetch",
+    "web applications",
+    "simplification",
+    "flexibility",
+    "scalability",
+    "efficiency",
+    "configuration",
+    "routing",
+    "JavaScript package",
+    "developer tool",
+  ],
+  "author": "Norbert Mosinski",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^29.5.3",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-unused-imports": "^3.0.0",
+    "jest": "^29.6.1",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.1.6"
+  }
+}
