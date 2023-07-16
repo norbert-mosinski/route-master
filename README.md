@@ -28,39 +28,89 @@ import RouteMaster from 'routemaster';
 ```
 
 Define your routes using RouteMaster's simple syntax:
-```
-const routes = RouteMaster.createRoutes([
-  {
-    name: 'home',
+```ts
+const routes = RouteMaster.createRoutes({
+  home: () => ({
     path: '/',
+    method: 'GET',
     // Additional configuration options here
-  },
+  }),
   // Define more routes as needed
-]);
-
+});
 ```
 
 Attach interceptors to routes for handling pre-processing or authentication:
 ```ts
-const routes = RouteMaster.createRoutes([
-  {
-    name: 'home',
+const routes = RouteMaster.createRoutes({
+  home: () => ({
     path: '/',
-    interceptors: [
-      // Interceptor functions here
-    ],
-  },
+    method: 'GET',
+    interceptors: {
+      request: [
+        // Interceptor functions here
+      ],
+      response: [
+        // Interceptor functions here
+      ],
+    }
+  }),
   // Define more routes with interceptors
-]);
+});
 ```
+
+Define route parameters. Every parameter defined in the route path will be replaced by the value of the corresponding parameter in the params object.
+Parameters defined in params but not in the route path will be appended to the end of the route URL as query parameters or as body parameters, depending on the HTTP method.
+```ts
+const routes = RouteMaster.createRoutes({
+  product: (id) => ({
+    path: '/products/{id}',
+    params: {id},
+    method: 'GET',
+  }),
+  create: (params) => ({
+    path: '/products/create',
+    params,
+    method: 'POST',
+  }),
+  // Define more routes with interceptors
+});
+```
+
+RouteMaster supports nested routes, allowing you to create hierarchical route structures. Nested routes are useful when you have a parent route that encapsulates child routes. The child routes inherit the interceptors from their parent route and have URLs that start with the parent route URL.
+
+To define nested routes, you can include a `children` property in the route configuration object. Here's an example:
+
+```ts
+const routes = RouteMaster.createRoutes({
+  users: () => ({
+    path: '/users',
+    method: 'GET',
+    children: {
+      edit: (id) => ({
+        path: '/{id}/edit',
+        method: 'PUT',
+        // Additional configuration options for child route
+      }),
+     delete: (id) => ({
+        path: '/{id}',
+        method: 'DELETE',
+        // Additional configuration options for child route
+      })       
+      // Define more child routes as needed
+    }
+  }),
+  // Define more parent routes with their respective child routes
+});
+
 Integrate with your preferred HTTP client, such as Axios or Fetch, to handle the actual requests:
 ```ts
 const client = axios.create();
-const routeWrapper = RouteMaster.createRouteWrapper(routes, client);
+const clientWrapper = RouteMaster.createClientWrapper(routes, client);
 ```
-Now you can make requests to your defined routes using the routeWrapper object:
+
+Now you can make requests to your defined routes using the clientWrapper object:
 ```ts
-routeWrapper.home()
+clientWrapper.home().post()
   .then(response => {
     // Handle the response
   })
@@ -68,7 +118,6 @@ routeWrapper.home()
     // Handle the error
   });
 ```
-For more detailed usage examples and configuration options, please refer to the documentation.
 
 ## Contributing
 Contributions are welcome! If you find any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request.
