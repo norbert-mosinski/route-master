@@ -1,4 +1,5 @@
 import { HttpMethod } from "../enums/http-method";
+import { RequestConfig } from "./request-config";
 import {RequestInterceptor} from "./request-interceptor";
 import {ResponseInterceptor} from "./response-interceptor";
 import { RouteDefinerBag } from "./route-definer-bag";
@@ -7,6 +8,7 @@ export interface BaseRouteDefinition {
     path: string;
     params?: Record<string, unknown>;
     method?: HttpMethod;
+    requestConfig?: RequestConfig;
     interceptors?: {
         request?: RequestInterceptor[];
         response?: ResponseInterceptor[];

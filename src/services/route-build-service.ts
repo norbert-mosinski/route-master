@@ -8,11 +8,11 @@ import { InterceptorInjectionParams } from '../types/interceptor-injection-param
 
 export class RouteBuildService
 {
-    buildRoutes = <ExactRouteDefinerBag extends RouteDefinerBag, ConcreteClient extends Client<unknown>>(routeDefinerBag: ExactRouteDefinerBag, client: ConcreteClient, interceptorInjectionParams: InterceptorInjectionParams = {}): BuiltRoutesBag<typeof routeDefinerBag, ConcreteClient> => {
+    buildRoutes = <ExactRouteDefinerBag extends RouteDefinerBag, ConcreteClient extends Client<unknown, unknown>>(routeDefinerBag: ExactRouteDefinerBag, client: ConcreteClient, interceptorInjectionParams: InterceptorInjectionParams = {}): BuiltRoutesBag<typeof routeDefinerBag, ConcreteClient> => {
         return this.innerBuildRoutes(routeDefinerBag, [], client, interceptorInjectionParams);
     }
 
-    private innerBuildRoutes = <ExactRouteDefinerBag extends RouteDefinerBag, ConcreteClient extends Client<unknown>>(routeDefinerBag: ExactRouteDefinerBag, routeDefinitions: RouteDefinition[], client: ConcreteClient, interceptorInjectionParams: InterceptorInjectionParams): BuiltRoutesBag<typeof routeDefinerBag, ConcreteClient> => {
+    private innerBuildRoutes = <ExactRouteDefinerBag extends RouteDefinerBag, ConcreteClient extends Client<unknown, unknown>>(routeDefinerBag: ExactRouteDefinerBag, routeDefinitions: RouteDefinition[], client: ConcreteClient, interceptorInjectionParams: InterceptorInjectionParams): BuiltRoutesBag<typeof routeDefinerBag, ConcreteClient> => {
         const route = (routeDefiner: RouteDefiner) => (...params: Parameters<typeof routeDefiner>) => {
             const routeDefinition = routeDefiner(...params);
 
