@@ -4,17 +4,14 @@ import { RequestConfig } from '../types/request-config';
 import {RequestInterceptor} from '../types/request-interceptor';
 import {ResponseInterceptor} from '../types/response-interceptor';
 import { RouteDefinition } from '../types/route-definition';
-import { InterceptorInjectionParams } from '../types/interceptor-injection-params';
 
 export class RouteManager<ExactClient extends Client<unknown, unknown>> {
     readonly routeDefinitions: RouteDefinition[];
     readonly client: ExactClient;
-    readonly interceptorInjectionParams: InterceptorInjectionParams;
   
-    constructor(routeDefinitions: RouteDefinition[], client: ExactClient, interceptorInjectionParams: InterceptorInjectionParams) {
+    constructor(routeDefinitions: RouteDefinition[], client: ExactClient) {
       this.routeDefinitions = routeDefinitions;
       this.client = client;
-      this.interceptorInjectionParams = interceptorInjectionParams;
     }
   
     resolveParams = () => {
@@ -66,7 +63,7 @@ export class RouteManager<ExactClient extends Client<unknown, unknown>> {
       const definition = this.lastDefinition();
       const interceptors = this.resolveInterceptors();
   
-      const config = interceptors.request.reduce((config, interceptor) => interceptor(config, this.interceptorInjectionParams), {
+      const config = interceptors.request.reduce((config, interceptor) => interceptor(config), {
         ...this.resolveConfig(),
         url: this.resolveUrl(),
         method: definition?.method || HttpMethod.GET,
@@ -75,7 +72,7 @@ export class RouteManager<ExactClient extends Client<unknown, unknown>> {
         ...requestConfig,
       });
   
-      return interceptors.response.reduce((response, interceptor) => interceptor(response, this.interceptorInjectionParams), await this.client.request<Data>(config));
+      return interceptors.response.reduce((response, interceptor) => interceptor(response), await this.client.request<Data>(config));
     };
   
     private lastDefinition = () => this.routeDefinitions[this.routeDefinitions.length - 1];
