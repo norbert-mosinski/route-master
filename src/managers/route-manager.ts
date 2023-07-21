@@ -63,7 +63,7 @@ export class RouteManager<ExactClient extends Client<unknown, unknown>> {
       const definition = this.lastDefinition();
       const interceptors = this.resolveInterceptors();
   
-      const config = interceptors.request.reduce((config, interceptor) => interceptor(config), {
+      const config = interceptors.request.reduce((config, interceptor) => (typeof interceptor === 'function' ? interceptor(config) : interceptor.interceptor(config)), {
         ...this.resolveConfig(),
         url: this.resolveUrl(),
         method: definition?.method || HttpMethod.GET,
@@ -72,7 +72,10 @@ export class RouteManager<ExactClient extends Client<unknown, unknown>> {
         ...requestConfig,
       });
   
-      return interceptors.response.reduce((response, interceptor) => interceptor(response), await this.client.request<Data>(config));
+      return interceptors.response.reduce(
+        (response, interceptor) => (typeof interceptor === 'function' ? interceptor(response) : interceptor.interceptor(response)),
+        await this.client.request<Data>(config),
+      );
     };
   
     private lastDefinition = () => this.routeDefinitions[this.routeDefinitions.length - 1];

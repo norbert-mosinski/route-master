@@ -1,5 +1,7 @@
 import { RequestConfig } from "./request-config";
 
-export interface RequestInterceptor {
-  <ConcreteConfig extends RequestConfig = RequestConfig>(requestConfig: ConcreteConfig): ConcreteConfig;
+interface RequestInterceptorFunction {
+  <Config extends RequestConfig>(requestConfig: Config): Config;
 }
+
+export type RequestInterceptor = RequestInterceptorFunction | (unknown & { interceptor: RequestInterceptorFunction });
