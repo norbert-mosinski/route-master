@@ -86,12 +86,3 @@ test('Request interceptors are being called in the right order', async () => {
     expect(testParam).toBe(3);
   });
 });
-
-test('Parameters are being resolved correctly', async () => {
-  fail('Not implemented');
-});
-
-test('Config is being resolved correctly', async () => {
-  fail('Not implemented');
-  // then corrections, then readme
-});
