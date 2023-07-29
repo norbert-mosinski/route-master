@@ -66,5 +66,15 @@
         "extends": [
         ]
       }
-    ]
+    ],
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "ecmaVersion": 13,
+      "sourceType": "module"
+    },
+    "env": {
+      "browser": true
+    }
   }
