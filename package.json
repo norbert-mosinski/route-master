@@ -2,13 +2,16 @@
   "name": "route-master",
   "version": "1.0.0",
   "description": "Simplify route management, define routes effortlessly, attach interceptors, integrate with Axios/Fetch. Streamline routing, empower developers. Create efficient web apps. No more complex configurations. Embrace convenience.",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
   "scripts": {
     "test": "jest --config jestconfig.json",
     "build": "tsc",
     "lint": "eslint ./src --fix --ext .js,.jsx,.ts,.tsx",
-    "start": "node lib/index.js"
+    "start": "node lib/index.js",
+    "preversion" : "npm run lint",
+    "prepare" : "npm run build",
+    "prepublishOnly" : "npm test && npm run lint",
+    "version" : "npm run lint && git add -A src",
+    "postversion" : "git push && git push --tags"
   },
   "keywords": [
     "route management",
