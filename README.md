@@ -21,8 +21,6 @@ npm install routemaster
 ```
 
 ## Usage
-Import RouteMaster into your project:
-
 Define your routes using RouteMaster's simple syntax:
 ```ts
 const routes = {
@@ -102,13 +100,16 @@ const routes = {
 #### Building routes
 Once you have defined your routes, you can build them using the RouteBuildService class:
 ```ts
+import {AxiosAdapter} from 'route-master/adapters/axios-adapter';
+import {RouteBuildService} from 'route-master/services/route-build-service';
+
 const axiosAdapter = new AxiosAdapter();
 export const routes = new RouteBuildService().buildRoutes(routeDefinerBag, axiosAdapter);
 ```
 
 Now you can make requests to your defined routes using the routes object:
 ```ts
-const response = await routes().users().edit(1).request();
+const response = await routes.users().edit(1).request();
 ```
 
 ## Contributing
