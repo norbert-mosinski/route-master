@@ -1,6 +1,6 @@
 {
   "name": "routing-master",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Simplify route management, define routes effortlessly, attach interceptors, integrate with Axios/Fetch. Streamline routing, empower developers. Create efficient web apps. No more complex configurations. Embrace convenience.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
