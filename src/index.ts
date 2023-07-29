@@ -1,5 +1,5 @@
-import { RouteBuildService } from "./services/route-build-service";
 import { AxiosAdapter } from './adapters/axios-adapter';
+import { RouteBuildService } from './services/route-build-service';
 
 export const client = new RouteBuildService();
 

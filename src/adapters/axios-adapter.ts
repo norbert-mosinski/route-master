@@ -1,8 +1,8 @@
-import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
-import { HttpMethod } from "../enums/http-method";
-import { Client } from "../types/client";
-import { RequestConfig } from '../types/request-config';
+import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 
+import { HttpMethod } from '../enums/http-method';
+import { Client } from '../types/client';
+import { RequestConfig } from '../types/request-config';
 
 type AxiosConfig = RequestConfig & { axiosConfig?: AxiosRequestConfig };
 

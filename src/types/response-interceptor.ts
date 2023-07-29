@@ -1,4 +1,4 @@
-import { Response } from "./response";
+import { Response } from './response';
 
 interface ResponseInterceptorFunction {
   <ConcreteResponse extends Response>(response: ConcreteResponse): ConcreteResponse;

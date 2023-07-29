@@ -1,4 +1,4 @@
-import { RequestConfig } from "./request-config";
+import { RequestConfig } from './request-config';
 
 interface RequestInterceptorFunction {
   <Config extends RequestConfig>(requestConfig: Config): Config;
