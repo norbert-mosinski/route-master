@@ -100,8 +100,8 @@ const routes = {
 #### Building routes
 Once you have defined your routes, you can build them using the RouteBuildService class:
 ```ts
-import {AxiosAdapter} from 'routing-master/adapters/axios-adapter';
-import {RouteBuildService} from 'routing-master/services/route-build-service';
+import {AxiosAdapter} from 'routing-master';
+import {RouteBuildService} from 'routing-master';
 
 const axiosAdapter = new AxiosAdapter();
 export const routes = new RouteBuildService().buildRoutes(routeDefinerBag, axiosAdapter);
