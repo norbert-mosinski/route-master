@@ -1,27 +1,27 @@
-# RouteMaster
+# RoutingMaster
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-RouteMaster is a powerful JavaScript package that simplifies route management and provides enhanced flexibility. It allows you to effortlessly define and name routes, attach interceptors to individual routes, and seamlessly integrate with popular HTTP clients like Axios or Fetch. By streamlining the process of handling routing, RouteMaster empowers developers to create efficient and scalable web applications.
+RoutingMaster is a powerful JavaScript package that simplifies route management and provides enhanced flexibility. It allows you to effortlessly define and name routes, attach interceptors to individual routes, and seamlessly integrate with popular HTTP clients like Axios or Fetch. By streamlining the process of handling routing, RoutingMaster empowers developers to create efficient and scalable web applications.
 
 ## Features
 
-- **Easy Route Definition**: Define routes with ease using RouteMaster's intuitive syntax and naming conventions.
+- **Easy Route Definition**: Define routes with ease using RoutingMaster's intuitive syntax and naming conventions.
 - **Interceptor Attachments**: Attach interceptors to specific routes to handle pre-processing or authentication logic.
 - **Integration with Popular HTTP Clients**: Seamlessly integrate with popular HTTP clients like Axios or Fetch to handle the actual requests.
 - **Scalable and Efficient**: Streamline your routing process for improved performance and scalability.
-- **Simplified Configuration**: Say goodbye to complex routing configurations and embrace the simplicity and convenience provided by RouteMaster.
+- **Simplified Configuration**: Say goodbye to complex routing configurations and embrace the simplicity and convenience provided by RoutingMaster.
 
 ## Installation
 
-You can install RouteMaster via npm:
+You can install RoutingMaster via npm:
 
 ```bash
-npm install routemaster
+npm install routing-master
 ```
 
 ## Usage
-Define your routes using RouteMaster's simple syntax:
+Define your routes using RoutingMaster's simple syntax:
 ```ts
 const routes = {
   home: () => ({
@@ -116,4 +116,4 @@ const response = await routes.users().edit(1).request();
 Contributions are welcome! If you find any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request.
 
 ## License
-RouteMaster is open source and released under the MIT License.
+RoutingMaster is open source and released under the MIT License.
