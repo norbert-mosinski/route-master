@@ -8,7 +8,7 @@ export interface BaseRouteDefinition {
     path: string;
     params?: Record<string, unknown>;
     method?: HttpMethod;
-    requestConfig?: RequestConfig;
+    requestConfig?: Partial<RequestConfig>;
     interceptors?: {
         request?: RequestInterceptor[];
         response?: ResponseInterceptor[];

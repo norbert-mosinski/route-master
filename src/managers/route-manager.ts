@@ -59,7 +59,7 @@ export class RouteManager<ExactClient extends Client<unknown, unknown>> {
       }, {} as RequestConfig);
     };
   
-    request = async <Data = any, Config extends RequestConfig = RequestConfig>(requestConfig?: Config) => {
+    request = async <Data = any, Config extends RequestConfig = RequestConfig>(requestConfig?: Partial<Config>) => {
       const definition = this.lastDefinition();
       const interceptors = this.resolveInterceptors();
   
